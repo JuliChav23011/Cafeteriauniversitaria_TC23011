@@ -21,6 +21,13 @@
 
         $totalpagar = $precio * $Cantidad;
         $mostrarDatos = true;
+        $descuento = 0;
+
+        if($totalpagar >= 20){
+            $descuento = $totalpagar * 0.05;
+            $totalpagar = $descuento -$totalpagar;
+        }
+
     }
 
 
@@ -44,7 +51,7 @@
                 <select name="producto" id="">
                     <?php foreach($Productos as $key => $value) : ?>
                         <?php foreach($value as $clave => $valor) : ?>
-                            <option value="<?= $clave?>"><?= $valor["nombre"]?></option>
+                            <option value="<?= $clave?>"><?= $valor["nombre"]?> $<?= $valor["precio"]?></option>
                         <?php endforeach?>
                     <?php endforeach?>
                 </select>
@@ -60,11 +67,24 @@
             <table border="1">
                 <thead>
                     <tr>
-                        <th><?= $nombre?></th>
-                        <th><?= $producto["nombre"]?></th>
-                        
+                        <th>Nombre</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                        <th>Descuento</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td><?= $nombre?></td>
+                        <td><?= $producto["nombre"]?></td>
+                        <td><?= $Cantidad?></td>
+                        <td><?= $precio["precio"]?></td>
+                        <td><?= $descuento?></td>
+                        <td><?= $totalpagar?></td>
+                    </tr>
+                </tbody>
 
             </table>
         <?php endif?>
