@@ -1,15 +1,17 @@
 <?php
 
     $Productos = [
-        "bebidas" => [["nombre" => "cafe", "precio" => 2.5],
+        ["bebidas" => ["nombre" => "cafe", "precio" => 2.5],
                 ["nombre" => "soda", "precio" => 1.0],
                 ["Nombre" => "jugo", "precio" => 0.5]],
-        "alimentos"=> [["nombre"=> "churro", "precio"=> 1.25],
+        ["alimentos"=> ["nombre"=> "churro", "precio"=> 1.25],
                     ["nombre" => "pan", "precio" => 1.5]],
-        "postes"=> [["nombre"=> "chaseecake", "precio" => 3.5],
+        ["postes"=> ["nombre"=> "chaseecake", "precio" => 3.5],
                     ["nombre" => "flan", "precio" => 2.5]]
         
     ];
+
+    $mostrarDatos = false;
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $_POST["nombre"];
@@ -18,7 +20,7 @@
         $precio = $producto["precio"];
 
         $totalpagar = $precio * $Cantidad;
-        
+        $mostrarDatos = true;
     }
 
 
@@ -41,7 +43,9 @@
                 <label for="">alimento a seleccionar</label>
                 <select name="producto" id="">
                     <?php foreach($Productos as $key => $value) : ?>
-                        <option value="<?= $key?>"><?= $value["nombre"]?></option>
+                        <?php foreach($value as $clave => $valor) : ?>
+                            <option value="<?= $clave?>"><?= $valor["nombre"]?></option>
+                        <?php endforeach?>
                     <?php endforeach?>
                 </select>
                 <br><br>
@@ -49,6 +53,21 @@
                 <input type="number" name="cantidad">
                 <br><br>
                 <button>Enviar</button>
+    </div>
+    <div>
+        <?php if($mostrarDatos):?>
+            <h2>datos enviados</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th><?= $nombre?></th>
+                        <th><?= $producto["nombre"]?></th>
+                        
+                    </tr>
+                </thead>
+
+            </table>
+        <?php endif?>
     </div>
 </body>
 </html>
