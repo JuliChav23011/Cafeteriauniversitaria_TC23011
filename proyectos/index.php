@@ -16,7 +16,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $_POST["nombre"];
         $Cantidad = $_POST["cantidad"];
-        $producto = $Productos[$_POST["Nombre"]];
+        $producto = $Productos[$_POST["nombre"]];
         $precio = $producto["precio"];
 
         $totalpagar = $precio * $Cantidad;
@@ -25,7 +25,11 @@
 
         if($totalpagar >= 20){
             $descuento = $totalpagar * 0.05;
-            $totalpagar = $descuento -$totalpagar;
+            $totalpagar = $totalpagar -$descuento;
+        }
+        if($totalpagar >= 40){
+           $descuento = $totalpagar * 0.05;
+            $totalpagar = $totalpagar - $descuento;
         }
 
     }
