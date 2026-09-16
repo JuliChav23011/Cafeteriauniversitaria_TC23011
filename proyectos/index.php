@@ -28,7 +28,7 @@
             $totalpagar = $totalpagar -$descuento;
         }
         if($totalpagar >= 40){
-           $descuento = $totalpagar * 0.05;
+           $descuento = $totalpagar * 0.10;
             $totalpagar = $totalpagar - $descuento;
         }
 
@@ -63,6 +63,14 @@
                 <label for="">cantidad</label>
                 <input type="number" name="cantidad">
                 <br><br>
+                <label for="">Tamaño</label>
+                <br>
+                <label for=""> grande</label>
+                <input type="radio" name="tamaño">
+                <label for="">pequeño</label>
+                <input type="radio" name="tamaño">
+                <label for="">pequeño</label>
+                <input type="radio" name="tamaño">
                 <button>Enviar</button>
     </div>
     <div>
